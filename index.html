@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تطبيق الملاحظات</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>ملاحظاتي</h2>
+  <textarea id="noteArea" placeholder="اكتب ملاحظاتك هنا..."></textarea><br>
+  <button onclick="saveNote()">حفظ</button>
+
+  <script>
+    // تحميل الملاحظة عند فتح الصفحة
+    window.onload = function() {
+      const savedNote = localStorage.getItem("myNote");
+      if (savedNote) {
+        document.getElementById("noteArea").value = savedNote;
+      }
+    }
+
+    // حفظ الملاحظة
+    function saveNote() {
+      const note = document.getElementById("noteArea").value;
+      localStorage.setItem("myNote", note);
+      alert("تم حفظ الملاحظة!");
+    }
+  </script>
+</body>
+</html>
